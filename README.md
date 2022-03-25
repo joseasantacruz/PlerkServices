@@ -39,14 +39,14 @@ database.sql
 psql -h localhost -p 5432 -U plerkuser -d plerk < db
 ```
 
-5. Create a superuser for the Django Admin:
+6. Create a superuser for the Django Admin:
 ```sh
 cd plerkservices
 python manage.py createsuperuser
 ```
 
 
-6. Create a superuser for the Django Admin:
+7. Create a superuser for the Django Admin:
 ```sh
 python manage.py runserver
 ```

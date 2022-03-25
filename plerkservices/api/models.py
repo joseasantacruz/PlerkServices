@@ -36,9 +36,16 @@ class Transaction(models.Model):
     def save(self, *args, **kwargs):
         if not self.id:
             old_transaction = ''
+            if self.status_transaction == 'closed' and self.status_approved:
+                self.final_payment = True
+            else:
+                self.final_payment = False
         else:
             old_transaction = Transaction.objects.get(id=self.id)
         super().save(*args, **kwargs)
-        if self.status_transaction == 'closed' and self.status_approved and old_transaction != '' and self.final_payment == old_transaction.final_payment:
-            self.final_payment = True
+        if old_transaction != '' and self.final_payment == old_transaction.final_payment:
+            if self.status_transaction == 'closed' and self.status_approved:
+                self.final_payment = True
+            else:
+                self.final_payment = False
             self.save()
