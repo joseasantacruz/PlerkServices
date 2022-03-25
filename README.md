@@ -21,6 +21,7 @@ git clone git@github.com:joseasantacruz/PlerkServices.git
 2. Activate the virtual environment:
 ```sh
 cd PlerkServices
+virtualenv venv
 source venv/bin/activate
 ```
 
